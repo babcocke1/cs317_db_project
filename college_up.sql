@@ -30,6 +30,16 @@ create table cost(
     idcollege INT REFERENCES college(college_id),
     PRIMARY KEY (cost_id)
 );   
+drop table if exists stats;
+create table stats(
+    test_scores INT,
+    accepctance_rate INT,
+    grad_rate INT,
+    ranking INT,
+);
+create table pictures(
+
+);
 -- ) ENGINE=InnoDB;
 -- drop table stats;
 -- create 
