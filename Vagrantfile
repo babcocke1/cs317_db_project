@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell",    
     inline: "echo I have gained sentience"
   config.vm.network :forwarded_port, guest: 80, host: 4567
+  config.vm.network :forwarded_port, guest: 8000, host: 4568
   
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at

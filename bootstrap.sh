@@ -15,5 +15,4 @@ apt-get install -y mariadb-server
 python3 -m pip install --upgrade pip
 pip3 install mysqlclient
 apt-get install -y -mod-php
-apt-get install -y -mod-php
 sudo snap install node --classic --channel=16
