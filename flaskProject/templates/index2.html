@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+{% block head %} 
+    <title>Project 404 V2</title>
+    <style>
+        * {box-sizing: border-box;}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #2E151B;
+        }
+        .topnav a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            width: 20%;
+        }
+        .topnav a:hover {
+            backgroung-color: #FFCB9A;
+            color: #D1E8E2;
+        }
+        .topnav input[type=text] {
+            float: none;
+            padding: 6px;
+            margin-top: 16px;
+            border: none;
+            font-size: 17px;
+            width: 60%;
+            color: #116466;
+        }
+        @media screen and (max-width: 600px) {
+            .topnav a, .topnav input[type=text] {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+                padding: 14px:
+            }	
+            .topnav input[type=text] {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+    <!-- Sort By Dropdown Style -->
+    <style>
+        select {
+            width: 140px;
+            height: 35px;
+            padding: 4px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px #D1E8E2;
+            background: #D1E8E2;
+            border: none;
+            outline: none;
+            display: inline-block;
+            appearance: none;
+            cursor: pointer;
+            border: 1px solid #116466;
+            color: #116466
+        }
+        label:hover {
+            background-color: #FFCB9A;
+            color: #2E151B;
+        }
+        label {
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 17px;
+        }
+        label:after {
+            content: '<>';
+            color: #116466;
+            font 11px "Consolas", monospace;
+            color: 2C3531;
+            transform: rotate(90deg);
+            right: 8px;
+            top: 0px;
+            padding: 0 0 2px;
+            border-bottom: 2px solid #2E151B;
+            position: absolute;
+            pointer-events: none;
+        }
+        label:before {
+            content: ";
+            right: 6px;
+            top: 0px;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            pointer-events: none;
+            display: block;
+        }
+    </style>
+    <!-- Filter Checkbox Dropdown Style -->
+    <style>
+        .dropdown-check-list {
+            display: inline-block;
+        }
+        .dropdown-check-list .anchor {
+            height: 35px;
+            padding: 5px 50px 5px 10px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px #999;
+            background: #eee;
+            border: none;
+            outline: none;
+            display: inline-block;
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        .dropdown-check-list .anchor:after {
+            content: '<>';
+            font 11px "Consolas", monospace;
+            color: #666;
+            transform: rotate(90deg);
+            right: 8px;
+            top: 5px;
+            padding: 0 0 2px;
+            border-bottom: 1px solid #ddd;
+            position: absolute;
+            pointer-events: none;
+        }
+        .dropdown-check-list .anchor:active:after {
+            right: 8px;
+            top: 21%;
+        }
+        .dropdown-check-list ul.items {
+            padding: 2px;
+            display: none;
+            margin: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .dropdown-check-list ul.items li {
+            list-style: none;
+            float: left;
+            
+        }
+        .dropdown-check-list.visible .anchor {
+            color: #0094ff;
+        }
+        .dropdown-check-list.visible .items {
+            display: block;
+        }
+    </style>
+    <!-- Header with Logo Style -->
+    <style>
+        header {
+            position: relative;
+            width: 100%;
+            min-height: auto;
+            text-align: center;
+            color: #000;
+            background-image: url();
+            background-position: center;
+            background-size: cover;
+            background-color: #1C3334;
+        }
+        header .header-content {
+            position: relative;
+            width: 100%;
+            padding: 0px 0px 57px 0px;
+            text-align: center;
+        }
+        header .header-content .header-content-inner h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 700;
+            padding-top: 56px;
+            color: #D1E8E2;
+        }
+        .header-content-inner img {
+            float: left;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+    <!-- Campus List Style -->
+    <style>
+        campus {
+            position: relative;
+            width: 100%
+            min-height: auto;
+            text-align: center;
+            color: #000;
+            background-image: url();
+            background-position: center;
+            background-size: cover;
+        }
+        campus .header-content {
+            position: relative;
+            width: 90%;
+            margin-top: 50px;
+            padding-bottom: 19px;
+            border: 2px solid #116466;
+            background-color: #2E151B;
+        }
+        campus .header-content .header-content-inner h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 650;
+            padding-top: 10px;
+            padding-left: 0px;
+            color: #D1E8E2;
+            text-align: center;
+        }
+        campus .header-content .header-content-inner p {
+            font-weight: 550;
+            padding-left: 170px;
+            color: #D1E8E2;
+            text-align: center;
+        }
+        .header-content-inner img {
+            float: left;
+            width: 150px;
+            height: 150px;
+            
+        }
+    </style>
+
+    <style>
+        ::selection {
+            background-color: #D1E8E2;
+            color: #2F4454;
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <img src="PlaceholderImage.png">
+                <h1>Team 404 Banner placeholder</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body %} 
+    <div class= "topnav">
+        <a href= "#home" style= "float:left">
+            <div id="list1" class="dropdown-check-list" tabindex="100">
+                <span class="anchor">Filter</span>
+                <ul class="items">
+                    <li><input type="checkbox" />Apple </li>
+                    <li><input type="checkbox" />Orange</li>
+                    <li><input type="checkbox" />Grapes </li>
+                    <li><input type="checkbox" />Berry </li>
+                    <li><input type="checkbox" />Mango </li>
+                    <li><input type="checkbox" />Banana </li>
+                    <li><input type="checkbox" />Tomato</li>
+                </ul>
+            </div>
+            <script type= "text/javascript">
+                var checkList = document.getElementById('list1');
+                checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+                    if (checkList.classList.contains('visible'))
+                        checkList.classList.remove('visible');
+                    else
+                        checkList.classList.add('visible');
+                }
+            </script>
+        </a>
+        <input type="text" placeholder = "Search School Name...">
+        <a style= "float:right">
+            <label>
+                <select>
+                    <option selected>Sort By</option>
+                    <option>placeholder1</option>
+                    <option>placeholder2</option>
+                </select>
+            </label>
+        </a>
+    </div>
+
+    <ul style= "list-style: none; margin: 5%">
+        <li>
+            <campus>
+                <a href="#" style="text-decoration:none">
+                    <div class="header-content">
+                            <div class="header-content-inner">
+                                <img src="PlaceholderImage.png">
+                                <h1>University Name Placeholder</h1>
+                                <p class= "rank">#rank</p>
+                                <p>Location placeholder</p>
+                            </div>
+                        
+                    </div>
+                </a>
+            </campus>
+        </li>
+        <li>
+            <campus>
+                <a href="#" style="text-decoration:none">
+                    <div class="header-content">
+                            <div class="header-content-inner">
+                                <img src="PlaceholderImage.png">
+                                <h1>University Name Placeholder</h1>
+                                <p class= "rank">#rank</p>
+                                <p>Location placeholder</p>
+                            </div>
+                        
+                    </div>
+                </a>
+            </campus>
+        </li>
+    </ul>
+{% endblock %}
